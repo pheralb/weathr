@@ -11,13 +11,18 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "@/styles/index.css";
 import theme from "@/theme";
 
+// 💅 Layout ->
+import Layout from "@/layout";
+
 render(
   <ChakraProvider theme={theme}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <Layout>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </BrowserRouter>
+    </Layout>
   </ChakraProvider>,
   document.getElementById("app")!
 );
