@@ -15,7 +15,7 @@ const Card = ({ children }: Props) => {
       >
         <Box
           w="xs"
-          bg="cards.dark"
+          bg="light.dark"
           shadow="lg"
           rounded="lg"
           overflow="hidden"

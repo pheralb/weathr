@@ -1,28 +1,14 @@
 import { render } from "preact";
 
-// 🏹 React Router ->
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// App ->
+import App from "./app";
 
-// 📦 Pages ->
-import { Home } from "@/pages";
-
-// 🖌️ Chakra UI & custom theme ->
-import { ChakraProvider } from "@chakra-ui/react";
-import "@/styles/index.css";
-import theme from "@/theme";
-
-// 💅 Layout ->
-import Layout from "@/layout";
+// BrowserRouter ->
+import { BrowserRouter } from "react-router-dom";
 
 render(
-  <ChakraProvider theme={theme}>
-    <Layout>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
-    </Layout>
-  </ChakraProvider>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById("app")!
 );

@@ -11,8 +11,8 @@ const theme = extendTheme({
       light: "#F9F9F9",
       dark: "#121212",
     },
-    cards: {
-      light: "#FFFFFF",
+    light: {
+      white: "#FFFFFF",
       dark: "#232323",
     }
   },

@@ -10,8 +10,11 @@ import {
   CloseButton,
   Text,
   Heading,
+  Link,
 } from "@chakra-ui/react";
 import { TextAlignRight } from "phosphor-react";
+import Search from "@/components/search";
+import { Link as RouterLink } from "react-router-dom";
 
 const Header = () => {
   const bg = useColorModeValue("bg.light", "bg.dark");
@@ -35,15 +38,25 @@ const Header = () => {
       px={{ base: 5, sm: 6 }}
       py={5}
       transition="all 0.4s ease"
-      _hover={{ opacity: 1}}
+      _hover={{ opacity: 1 }}
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
-        <Flex direction="column">
-          <Heading fontSize="19">weathr</Heading>
-          <Text fontSize="13" color="gray.300">
-            Today, {date}
-          </Text>
-        </Flex>
+        <Link
+          as={RouterLink}
+          to="/"
+          _focus={{ borderColor: "transparent" }}
+          _hover={{ textTransform: "" }}
+        >
+          <Flex direction="column">
+            <Heading fontSize="19">weathr</Heading>
+            <Text fontSize="13" color="gray.300">
+              Today, {date}
+            </Text>
+          </Flex>
+        </Link>
+        <Box>
+          <Search />
+        </Box>
         <HStack display="flex" alignItems="center" spacing={1}>
           <HStack
             spacing={1}
