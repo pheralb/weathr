@@ -1,8 +1,7 @@
-import { ComponentChildren } from "preact";
 import { motion } from "framer-motion";
 
 type Props = {
-  children?: ComponentChildren;
+  children?: React.ReactNode;
 };
 
 const animations = {

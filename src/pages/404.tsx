@@ -1,5 +1,3 @@
-import React from "preact";
-
 type Props = {};
 
 const Error404 = (props: Props) => {

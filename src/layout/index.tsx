@@ -1,9 +1,8 @@
-import { ComponentChildren } from "preact";
 import Header from "@/layout/header";
 import { Box } from "@chakra-ui/react";
 
 type Props = {
-  children?: ComponentChildren;
+  children?: React.ReactNode;
 };
 
 const Index = ({ children }: Props) => {

@@ -10,7 +10,8 @@ import {
   CloseButton,
   Text,
   Heading,
-  Link,
+  Link as ChakraLink,
+  Icon,
 } from "@chakra-ui/react";
 import { TextAlignRight } from "phosphor-react";
 import Search from "@/components/search";
@@ -41,19 +42,19 @@ const Header = () => {
       _hover={{ opacity: 1 }}
     >
       <Flex alignItems="center" justifyContent="space-between" mx="auto">
-        <Link
-          as={RouterLink}
-          to="/"
-          _focus={{ borderColor: "transparent" }}
-          _hover={{ textTransform: "" }}
-        >
-          <Flex direction="column">
-            <Heading fontSize="19">weathr</Heading>
-            <Text fontSize="13" color="gray.300">
-              Today, {date}
-            </Text>
-          </Flex>
-        </Link>
+        <RouterLink to="/">
+          <ChakraLink
+            _focus={{ borderColor: "transparent" }}
+            _hover={{ textTransform: "" }}
+          >
+            <Flex direction="column">
+              <Heading fontSize="19">weathr</Heading>
+              <Text fontSize="13" color="gray.300">
+                Today, {date}
+              </Text>
+            </Flex>
+          </ChakraLink>
+        </RouterLink>
         <Box>
           <Search />
         </Box>
@@ -69,7 +70,7 @@ const Header = () => {
             <IconButton
               aria-label="Open menu"
               variant="ghost"
-              icon={<TextAlignRight size={25} weight="bold" />}
+              icon={<Icon as={TextAlignRight} />}
               onClick={mobileNav.onOpen}
             />
 

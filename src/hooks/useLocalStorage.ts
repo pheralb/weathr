@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState } from "react";
 
 export default function useLocalStorage<T>(
   key: string,

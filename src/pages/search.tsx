@@ -18,6 +18,7 @@ import Card from "@/components/card";
 import Error from "@/components/status/error";
 import Loading from "@/components/status/loading";
 
+import { IoSaveOutline } from "react-icons/io5";
 import { ArchiveTray, Moon, Sun } from "phosphor-react";
 import AnimatePage from "@/animate/pages";
 
@@ -28,7 +29,9 @@ const Search = () => {
   const { data, error } = useSWR(`${weatherUrl}${params.name}`, fetcher, {
     // When 400 error...
     onErrorRetry: (error) => {
-      if (error.status === 400) return;
+      if (error.status === 400) {
+        navigate("/404");
+      }
     },
   });
 
@@ -54,7 +57,7 @@ const Search = () => {
         </Text>
         <Button
           fontWeight="light"
-          leftIcon={<ArchiveTray size="22" />}
+          leftIcon={<Icon as={IoSaveOutline} />}
           onClick={saveLocation}
         >
           Save location by default

@@ -2,11 +2,10 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 
 // Pages ->
-import { Home, Search } from "@/pages";
+import { Home, Search, Error404 } from "@/pages";
 
 // Chakra UI, Framer Motion & custom theme ->
 import { ChakraProvider } from "@chakra-ui/react";
-import { AnimatePresence } from "framer-motion";
 import "@/styles/index.css";
 import theme from "@/theme";
 
@@ -18,12 +17,11 @@ const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Layout>
-        <AnimatePresence exitBeforeEnter>
-          <Routes key={location.pathname} location={location}>
-            <Route path="/" element={<Home />} />
-            <Route path="/search/:name" element={<Search />} />
-          </Routes>
-        </AnimatePresence>
+        <Routes key={location.pathname} location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:name" element={<Search />} />
+          <Route path="/404" element={<Error404 />} />
+        </Routes>
       </Layout>
     </ChakraProvider>
   );

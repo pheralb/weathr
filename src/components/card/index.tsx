@@ -1,8 +1,7 @@
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
-import { ComponentChildren } from "preact";
 
 type Props = {
-  children?: ComponentChildren;
+  children?: React.ReactNode;
 };
 
 const Card = ({ children }: Props) => {
