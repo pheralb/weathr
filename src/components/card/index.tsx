@@ -1,10 +1,11 @@
-import { Box, Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text, useColorModeValue } from "@chakra-ui/react";
 
 type Props = {
   children?: React.ReactNode;
 };
 
 const Card = ({ children }: Props) => {
+  const bg = useColorModeValue("bg.light", "bg.dark");
   return (
     <>
       <Flex
@@ -14,8 +15,8 @@ const Card = ({ children }: Props) => {
       >
         <Box
           w="xs"
-          bg="light.dark"
-          shadow="lg"
+          bg={bg}
+          shadow="md"
           rounded="lg"
           overflow="hidden"
           mx="auto"

@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <form onSubmit={handleSearch}>
-      <InputGroup bg="light.dark">
+      <InputGroup>
         <InputLeftElement
           pointerEvents="none"
           children={<MagnifyingGlass size={20} weight="bold" />}

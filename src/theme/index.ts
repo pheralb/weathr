@@ -8,13 +8,13 @@ const theme = extendTheme({
   },
   colors: {
     bg: {
-      light: "#F9F9F9",
+      light: "#FFFFFF",
       dark: "#121212",
     },
     light: {
       white: "#FFFFFF",
       dark: "#232323",
-    }
+    },
   },
   fonts: {
     body: "Inter-Regular, sans-serif",
@@ -25,9 +25,12 @@ const theme = extendTheme({
       "html, body": {
         height: "100%",
         maxHeight: "100vh",
-        background: mode("bg.light", "radial-gradient(circle at 1px 1px, #212121 1px, #121212 0)")(props),
+        background: mode(
+          "radial-gradient(circle at 1px 1px, #E5E5E5 1px, #FFFFFF 0)",
+          "radial-gradient(circle at 1px 1px, #212121 1px, #121212 0)"
+        )(props),
         backgroundSize: "40px 40px",
-        fontSize: "14px"
+        fontSize: "14px",
       },
     }),
   },

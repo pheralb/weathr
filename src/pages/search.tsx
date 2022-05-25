@@ -1,32 +1,21 @@
 import useSWR from "swr";
 import { useNavigate, useParams } from "react-router-dom";
 import { weatherUrl } from "@/services/rapidapi";
-import { fetcher } from "@/services/fetcher";
 
-import {
-  Box,
-  Button,
-  Container,
-  Flex,
-  HStack,
-  Icon,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Flex, Icon, Text } from "@chakra-ui/react";
 
-import Card from "@/components/card";
+import Resume from "@/components/resume";
 import Error from "@/components/status/error";
 import Loading from "@/components/status/loading";
 
 import { IoSaveOutline } from "react-icons/io5";
-import { ArchiveTray, Moon, Sun } from "phosphor-react";
 import AnimatePage from "@/animate/pages";
 
 const Search = () => {
   let params = useParams();
   const navigate = useNavigate();
 
-  const { data, error } = useSWR(`${weatherUrl}${params.name}`, fetcher, {
+  const { data, error } = useSWR(`${weatherUrl}${params.name}`, {
     // When 400 error...
     onErrorRetry: (error) => {
       if (error.status === 400) {
@@ -63,60 +52,13 @@ const Search = () => {
           Save location by default
         </Button>
       </Flex>
-      <Container maxW="container.lg">
-        <SimpleGrid
-          minChildWidth="120px"
-          spacing={{ base: "10px", sm: "30px" }}
-        >
-          <Card>
-            <Box>
-              <Text fontSize="6xl" fontFamily="Inter-Semibold">
-                {data.current.temp_c}º
-              </Text>
-              <HStack justifyContent="center">
-                {data.current.is_day ? (
-                  <Icon as={Sun} mt="1" boxSize="5" />
-                ) : (
-                  <Icon as={Moon} mt="1" boxSize="5" />
-                )}
-                <Text fontFamily="Inter-Semibold">
-                  {data.current.condition.text}
-                </Text>
-              </HStack>
-            </Box>
-          </Card>
-          <Card>
-            <Box>
-              <Text fontSize="6xl" fontFamily="Inter-Semibold">
-                {data.current.humidity}
-              </Text>
-              <Text fontFamily="Inter-Semibold">% - Humidity</Text>
-            </Box>
-          </Card>
-          <Card>
-            <Box>
-              <Text
-                fontSize={{ base: "5xl", sm: "6xl" }}
-                fontFamily="Inter-Semibold"
-              >
-                {data.current.gust_kph}
-              </Text>
-              <Text fontFamily="Inter-Semibold">% - Wind gust</Text>
-            </Box>
-          </Card>
-          <Card>
-            <Box>
-              <Text
-                fontSize={{ base: "5xl", sm: "6xl" }}
-                fontFamily="Inter-Semibold"
-              >
-                {data.current.wind_kph}
-              </Text>
-              <Text fontFamily="Inter-Semibold">km/h - Wind speed</Text>
-            </Box>
-          </Card>
-        </SimpleGrid>
-      </Container>
+      <Resume
+        temp_c={data.current.temp_c}
+        current_condition={data.current.condition.text}
+        humidity={data.current.humidity}
+        gust_kph={data.current.wind_kph}
+        wind_kph={data.current.wind_kph}
+      />
     </AnimatePage>
   );
 };

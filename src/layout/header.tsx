@@ -10,51 +10,50 @@ import {
   CloseButton,
   Text,
   Heading,
-  Link as ChakraLink,
   Icon,
 } from "@chakra-ui/react";
-import { TextAlignRight } from "phosphor-react";
+import { TextAlignRight, Heart } from "phosphor-react";
 import Search from "@/components/search";
-import { Link as RouterLink } from "react-router-dom";
+import Link from "@/components/link";
 
-const Header = () => {
+type Props = {
+  savedClick?: () => void;
+  savedIcon?: React.ReactElement;
+};
+
+const Header = ({ savedIcon, savedClick }: Props) => {
   const bg = useColorModeValue("bg.light", "bg.dark");
+  const colorToday = useColorModeValue("gray.500", "gray.300");
   const mobileNav = useDisclosure();
   const date = new Date().toLocaleDateString();
 
   const HeaderMenu = () => {
     return (
       <>
-        <Button variant="ghost">Sign in</Button>
+        <Button
+          variant="ghost"
+          fontWeight="light"
+          leftIcon={savedIcon}
+          onClick={savedClick}
+        >
+          Saved
+        </Button>
       </>
     );
   };
 
   return (
-    <Box
-      as="header"
-      bg={bg}
-      opacity="0.7"
-      w="full"
-      px={{ base: 5, sm: 6 }}
-      py={5}
-      transition="all 0.4s ease"
-      _hover={{ opacity: 1 }}
-    >
-      <Flex alignItems="center" justifyContent="space-between" mx="auto">
-        <RouterLink to="/">
-          <ChakraLink
-            _focus={{ borderColor: "transparent" }}
-            _hover={{ textTransform: "" }}
-          >
-            <Flex direction="column">
-              <Heading fontSize="19">weathr</Heading>
-              <Text fontSize="13" color="gray.300">
-                Today, {date}
-              </Text>
-            </Flex>
-          </ChakraLink>
-        </RouterLink>
+    <Box as="header" bg={bg} w="full" px={{ base: 5, sm: 6 }} py={5}>
+      <Flex direction="row" alignItems="center" justifyContent="space-between">
+        <Link href="/">
+          <Flex direction="column">
+            <Heading fontSize="19">weathr</Heading>
+            <Text fontSize="13" color={colorToday}>
+              Today, {date}
+            </Text>
+          </Flex>
+        </Link>
+
         <Box>
           <Search />
         </Box>
