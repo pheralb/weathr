@@ -12,7 +12,7 @@ import {
   Heading,
   Icon,
 } from "@chakra-ui/react";
-import { TextAlignRight, Heart } from "phosphor-react";
+import { TextAlignRight, Heart, MapPin } from "phosphor-react";
 import Search from "@/components/search";
 import Link from "@/components/link";
 
@@ -30,21 +30,27 @@ const Header = ({ savedIcon, savedClick }: Props) => {
   const HeaderMenu = () => {
     return (
       <>
-        <Button
+        <IconButton
           variant="ghost"
-          fontWeight="light"
-          leftIcon={savedIcon}
+          aria-label="Open/Close Saved Sidebar"
+          icon={savedIcon}
           onClick={savedClick}
-        >
-          Saved
-        </Button>
+        />
       </>
     );
   };
 
   return (
-    <Box as="header" bg={bg} w="full" px={{ base: 5, sm: 6 }} py={5}>
-      <Flex direction="row" alignItems="center" justifyContent="space-between">
+    <Box as="header">
+      <Flex
+        direction="row"
+        alignItems="center"
+        justifyContent="space-between"
+        bg={bg}
+        w="full"
+        px={{ base: 5, sm: 6 }}
+        py={5}
+      >
         <Link href="/">
           <Flex direction="column">
             <Heading fontSize="19">weathr</Heading>
@@ -53,10 +59,14 @@ const Header = ({ savedIcon, savedClick }: Props) => {
             </Text>
           </Flex>
         </Link>
-
-        <Box>
+        <HStack>
+          <IconButton
+            variant="ghost"
+            aria-label="Open/Close Sidebar"
+            icon={<MapPin size={22} weight="bold" />}
+          />
           <Search />
-        </Box>
+        </HStack>
         <HStack display="flex" alignItems="center" spacing={1}>
           <HStack
             spacing={1}

@@ -52,7 +52,7 @@ const Index = (props: Props) => {
       shadow="sm"
       {...props}
     >
-      <Flex p="5" mt="2" direction="column">
+      <Flex p="4" mt="2" direction="column">
         <Text fontSize="2xl" mb="3" fontFamily="Inter-Semibold">
           Saved:
         </Text>

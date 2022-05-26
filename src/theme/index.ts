@@ -9,7 +9,7 @@ const theme = extendTheme({
   colors: {
     bg: {
       light: "#FFFFFF",
-      dark: "#121212",
+      dark: "#13111C",
     },
     light: {
       white: "#FFFFFF",
@@ -27,7 +27,7 @@ const theme = extendTheme({
         maxHeight: "100vh",
         background: mode(
           "radial-gradient(circle at 1px 1px, #E5E5E5 1px, #FFFFFF 0)",
-          "radial-gradient(circle at 1px 1px, #212121 1px, #121212 0)"
+          "radial-gradient(circle at 1px 1px, #212121 1px, #13111C 0)"
         )(props),
         backgroundSize: "40px 40px",
         fontSize: "14px",

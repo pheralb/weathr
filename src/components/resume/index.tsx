@@ -24,7 +24,7 @@ const Index = ({
         </Card>
         <Card>
           <Box>
-            <Text fontSize="6xl" fontFamily="Inter-Semibold">
+            <Text fontSize="4xl" fontFamily="Inter-Semibold">
               {humidity}
             </Text>
             <Text fontFamily="Inter-Semibold">% - Humidity</Text>
@@ -36,9 +36,9 @@ const Index = ({
               fontSize={{ base: "5xl", sm: "6xl" }}
               fontFamily="Inter-Semibold"
             >
-              {gust_kph}
+              {wind_kph}
             </Text>
-            <Text fontFamily="Inter-Semibold">% - Wind gust</Text>
+            <Text fontFamily="Inter-Semibold">km/h - Wind speed</Text>
           </Box>
         </Card>
         <Card>
@@ -47,9 +47,9 @@ const Index = ({
               fontSize={{ base: "5xl", sm: "6xl" }}
               fontFamily="Inter-Semibold"
             >
-              {wind_kph}
+              {gust_kph}
             </Text>
-            <Text fontFamily="Inter-Semibold">km/h - Wind speed</Text>
+            <Text fontFamily="Inter-Semibold">% - Wind gust</Text>
           </Box>
         </Card>
       </SimpleGrid>
