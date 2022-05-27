@@ -9,11 +9,11 @@ type Props = {
 
 const SWUpdateMessage = ({ message, updateBtn, closeBtn }: Props) => {
   return (
-    <Box p="4" borderWidth="1px" borderRadius="10px">
-      <Text mb="3" fontFamily="Inter-Semibold" fontSize="16px">
+    <Box p="14" zIndex={2} borderWidth="1px" borderRadius="10px">
+      <Text mb="6" fontFamily="Inter-Semibold" fontSize="16px">
         🚀 {message}
       </Text>
-      <HStack>
+      <HStack spacing="4" justifyContent="space-between">
         <Button fontWeight="light" leftIcon={<RocketLaunch size={22} />} onClick={updateBtn}>Update</Button>
         <Button fontWeight="light" leftIcon={<X size={22} />} onClick={closeBtn}>Close</Button>
       </HStack>

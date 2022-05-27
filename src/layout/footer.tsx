@@ -12,7 +12,7 @@ const Footer = () => {
   const timeNow = `${date.getHours()}:${date.getMinutes()}`;
   return (
     <Flex
-      position="fixed"
+      position="sticky"
       as="footer"
       bg={bg}
       flexDirection="row"

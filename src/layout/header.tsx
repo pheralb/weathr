@@ -3,7 +3,6 @@ import {
   Flex,
   useColorModeValue,
   HStack,
-  Button,
   useDisclosure,
   VStack,
   IconButton,
@@ -12,9 +11,10 @@ import {
   Heading,
   Icon,
 } from "@chakra-ui/react";
-import { TextAlignRight, Heart, MapPin } from "phosphor-react";
+import { TextAlignRight, MapPin } from "phosphor-react";
 import Search from "@/components/search";
 import Link from "@/components/link";
+import ChangeTheme from "@/components/theme/change";
 
 type Props = {
   savedClick?: () => void;
@@ -25,11 +25,13 @@ const Header = ({ savedIcon, savedClick }: Props) => {
   const bg = useColorModeValue("bg.light", "bg.dark");
   const colorToday = useColorModeValue("gray.500", "gray.300");
   const mobileNav = useDisclosure();
-  const date = new Date().toLocaleDateString();
-
+  const date = new Date();
+  const dateNow = new Date().toLocaleDateString();
+  const hoursNow = `${date.getHours()}:${date.getMinutes()}`;
   const HeaderMenu = () => {
     return (
       <>
+        <ChangeTheme />
         <IconButton
           variant="ghost"
           aria-label="Open/Close Saved Sidebar"
@@ -41,25 +43,23 @@ const Header = ({ savedIcon, savedClick }: Props) => {
   };
 
   return (
-    <Box as="header">
+    <Box as="header" px={{ base: 5, sm: 6 }} py={5}>
       <Flex
         direction="row"
         alignItems="center"
         justifyContent="space-between"
         bg={bg}
         w="full"
-        px={{ base: 5, sm: 6 }}
-        py={5}
       >
         <Link href="/">
           <Flex direction="column">
             <Heading fontSize="19">weathr</Heading>
             <Text fontSize="13" color={colorToday}>
-              Today, {date}
+              {hoursNow}, {dateNow}
             </Text>
           </Flex>
         </Link>
-        <HStack>
+        <HStack display={{ base: "none", md: "inline-flex" }}>
           <IconButton
             variant="ghost"
             aria-label="Open/Close Sidebar"
@@ -79,31 +79,39 @@ const Header = ({ savedIcon, savedClick }: Props) => {
             <IconButton
               aria-label="Open menu"
               variant="ghost"
-              icon={<Icon as={TextAlignRight} />}
+              icon={<Icon as={TextAlignRight} boxSize={22} />}
               onClick={mobileNav.onOpen}
+              borderWidth="1px"
             />
 
-            <VStack
+            <HStack
               pos="absolute"
               top={0}
               left={0}
               right={0}
               display={mobileNav.isOpen ? "flex" : "none"}
-              flexDirection="column"
-              p={2}
-              pb={4}
-              m={2}
+              p={5}
+              zIndex={2}
               bg={bg}
-              spacing={3}
+              spacing={2}
               rounded="sm"
               shadow="sm"
+              borderBottomWidth="1px"
             >
               <CloseButton
+                mr="2"
+                borderWidth="1px"
                 aria-label="Close menu"
                 onClick={mobileNav.onClose}
               />
               <HeaderMenu />
-            </VStack>
+              <IconButton
+                variant="ghost"
+                aria-label="Open/Close Sidebar"
+                icon={<MapPin size={22} weight="bold" />}
+              />
+              <Search />
+            </HStack>
           </Box>
         </HStack>
       </Flex>
