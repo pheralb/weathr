@@ -14,7 +14,7 @@ const Card = ({ children }: Props) => {
         justifyContent="center"
       >
         <Box
-          w="xs"
+          w="full"
           bg={bg}
           borderWidth="2px"
           shadow="md"

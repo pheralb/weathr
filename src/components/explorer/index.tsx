@@ -1,27 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Avatar,
-  Box,
-  Drawer,
-  DrawerContent,
-  DrawerOverlay,
-  Flex,
-  Icon,
-  IconButton,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Text,
-  useColorModeValue,
-  useDisclosure,
-} from "@chakra-ui/react";
-
-import { FaBell, FaClipboardCheck, FaRss } from "react-icons/fa";
-import { AiFillGift } from "react-icons/ai";
-import { BsGearFill } from "react-icons/bs";
-import { FiMenu, FiSearch } from "react-icons/fi";
-import { HiCode, HiCollection } from "react-icons/hi";
-import { MdHome } from "react-icons/md";
+import { Box, Flex, Text } from "@chakra-ui/react";
 
 type Props = {
   w?: string;
@@ -42,17 +20,17 @@ const Index = (props: Props) => {
     <Box
       as="nav"
       pos="fixed"
-      top="0"
       right="0"
       h="full"
       pb="10"
       overflowX="hidden"
       overflowY="auto"
       w="80"
+      borderLeftWidth="1px"
       shadow="sm"
       {...props}
     >
-      <Flex p="4" mt="2" direction="column">
+      <Flex p="4" pl="7" mt="2" direction="column">
         <Text fontSize="2xl" mb="3" fontFamily="Inter-Semibold">
           Saved:
         </Text>

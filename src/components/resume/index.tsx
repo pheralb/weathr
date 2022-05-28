@@ -1,20 +1,47 @@
 import { WeatherData } from "@/interfaces/weatherData";
-import { Box, Container, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Container,
+  Icon,
+  Image,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import Card from "@/components/card";
+import { Drop, Moon, SunDim, Thermometer, Wind } from "phosphor-react";
+import useSWR from "swr";
+import { historyWeatherUrl } from "@/services/rapidapi";
+import Loading from "@/components/status/error";
+import Error from "@/components/status/error";
 
 const Index = ({
   temp_c,
   current_condition,
   humidity,
-  gust_kph,
   wind_kph,
+  icon_condition,
+  is_day,
+  city_name,
 }: WeatherData) => {
+  const utcDate = new Date().toJSON().slice(0, 10).replace(/-/g, "-");
+  const url = `${historyWeatherUrl}${city_name}&dt=${utcDate}`;
+  const { data } = useSWR(url);
+
+  if (!data) return <Loading message="Loading..." />;
+
   return (
     <Container maxW="container.lg">
-      <SimpleGrid minChildWidth="120px" spacing={{ base: "10px", sm: "30px" }}>
+      <SimpleGrid
+        minChildWidth={{ base: "140px", md: "120px" }}
+        spacing={{ base: "10px", sm: "30px" }}
+      >
         <Card>
           <Box>
-            <Text fontSize="6xl" fontFamily="Inter-Semibold">
+            <Center>
+              <Image src={icon_condition} boxSize={"35px"} />
+            </Center>
+            <Text fontSize="4xl" fontFamily="Inter-Semibold">
               {temp_c}
             </Text>
             <Box>
@@ -24,6 +51,21 @@ const Index = ({
         </Card>
         <Card>
           <Box>
+            <Icon as={Thermometer} boxSize={30} />
+            <Text
+              fontSize="4xl"
+              fontFamily="Inter-Semibold"
+            >
+              {is_day
+                ? `${data.forecast.forecastday[0].day.maxtemp_c} / ${data.forecast.forecastday[0].day.mintemp_c}`
+                : `${data.forecast.forecastday[0].day.maxtemp_c} / ${data.forecast.forecastday[0].day.mintemp_c}`}
+            </Text>
+            <Text fontFamily="Inter-Semibold">ºC - Max/Min</Text>
+          </Box>
+        </Card>
+        <Card>
+          <Box>
+            <Icon as={Drop} boxSize={30} />
             <Text fontSize="4xl" fontFamily="Inter-Semibold">
               {humidity}
             </Text>
@@ -32,24 +74,11 @@ const Index = ({
         </Card>
         <Card>
           <Box>
-            <Text
-              fontSize={{ base: "5xl", sm: "6xl" }}
-              fontFamily="Inter-Semibold"
-            >
+            <Icon as={Wind} boxSize={30} />
+            <Text fontSize="4xl" fontFamily="Inter-Semibold">
               {wind_kph}
             </Text>
             <Text fontFamily="Inter-Semibold">km/h - Wind speed</Text>
-          </Box>
-        </Card>
-        <Card>
-          <Box>
-            <Text
-              fontSize={{ base: "5xl", sm: "6xl" }}
-              fontFamily="Inter-Semibold"
-            >
-              {gust_kph}
-            </Text>
-            <Text fontFamily="Inter-Semibold">% - Wind gust</Text>
           </Box>
         </Card>
       </SimpleGrid>

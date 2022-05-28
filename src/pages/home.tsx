@@ -25,7 +25,7 @@ const Home = () => {
         <Flex direction="column" alignItems="center">
           <Text
             fontSize={{ base: "5xl", sm: "6xl" }}
-            mt={{ base: "3", sm: "6xl" }}
+            mt={{ base: "3", sm: "0" }}
             fontFamily="Inter-Semibold"
           >
             {data.location.name}
@@ -37,9 +37,13 @@ const Home = () => {
         <Resume
           temp_c={data.current.temp_c}
           current_condition={data.current.condition.text}
+          icon_condition={data.current.condition.icon}
           humidity={data.current.humidity}
           gust_kph={data.current.wind_kph}
           wind_kph={data.current.wind_kph}
+          is_day={data.current.is_day}
+          localtime={data.location.localtime_epoch}
+          city_name={data.location.name}
         />
       </AnimatePage>
     </>

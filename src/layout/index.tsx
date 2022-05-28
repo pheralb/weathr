@@ -2,7 +2,6 @@ import { Box, useDisclosure } from "@chakra-ui/react";
 
 import Header from "@/layout/header";
 import Explorer from "@/components/explorer";
-import Footer from "@/layout/footer";
 
 import { Heart, X } from "phosphor-react";
 
@@ -39,7 +38,6 @@ const Index = ({ children }: Props) => {
           savedClick={handleShowExplorer}
         />
         {children}
-        <Footer />
       </Box>
     </>
   );

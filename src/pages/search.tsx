@@ -8,21 +8,14 @@ import Resume from "@/components/resume";
 import Error from "@/components/status/error";
 import Loading from "@/components/status/loading";
 
-import { IoSaveOutline } from "react-icons/io5";
 import AnimatePage from "@/animate/pages";
+import { FloppyDisk } from "phosphor-react";
 
 const Search = () => {
   let params = useParams();
   const navigate = useNavigate();
 
-  const { data, error } = useSWR(`${weatherUrl}${params.name}`, {
-    // When 400 error...
-    onErrorRetry: (error) => {
-      if (error.status === 400) {
-        navigate("/404");
-      }
-    },
-  });
+  const { data, error } = useSWR(`${weatherUrl}${params.name}`);
 
   if (error) return <Error message={error} />;
   if (!data) return <Loading message="Loading..." />;
@@ -46,7 +39,7 @@ const Search = () => {
         </Text>
         <Button
           fontWeight="light"
-          leftIcon={<Icon as={IoSaveOutline} />}
+          leftIcon={<Icon as={FloppyDisk} />}
           onClick={saveLocation}
         >
           Save location by default
@@ -55,9 +48,13 @@ const Search = () => {
       <Resume
         temp_c={data.current.temp_c}
         current_condition={data.current.condition.text}
+        icon_condition={data.current.condition.icon}
         humidity={data.current.humidity}
         gust_kph={data.current.wind_kph}
         wind_kph={data.current.wind_kph}
+        is_day={data.current.is_day}
+        localtime={data.location.localtime_epoch}
+        city_name={data.location.name}
       />
     </AnimatePage>
   );

@@ -1,6 +1,4 @@
-import React from "react";
 import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Moon, Sun } from "phosphor-react";
 
 const Index = () => {
