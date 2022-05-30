@@ -1,6 +1,6 @@
 import { useCallback, useEffect } from "react";
 import toast from "react-hot-toast";
-import { Box, useToast } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import SWUpdateMessage from "./update";
 

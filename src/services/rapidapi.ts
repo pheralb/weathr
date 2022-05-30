@@ -1,6 +1,3 @@
-const weatherHost = "weatherapi-com.p.rapidapi.com";
-const weatherKey = "67a0048625msh9043c2cec667145p1bf18bjsn2ead66f76c24";
-
 // Requests ->
 
 export const weatherUrl =
@@ -17,8 +14,8 @@ export const searchWeatherUrl =
 export const fetchOptions = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Host": weatherHost,
-    "X-RapidAPI-Key": weatherKey,
+    "X-RapidAPI-Host": import.meta.env.VITE_RAPIDAPI_HOST,
+    "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
   },
 };
 

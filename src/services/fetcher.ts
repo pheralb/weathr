@@ -1,6 +1,7 @@
 import { fetchOptions } from "@/services/rapidapi";
 
 // Fetcher ->
+
 export const fetcher = async (url: string) => {
   const res = await fetch(url, fetchOptions);
 

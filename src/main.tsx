@@ -7,7 +7,7 @@ import App from "./app";
 // BrowserRouter ->
 import { BrowserRouter } from "react-router-dom";
 
-// SWR ->
+// SWR & fetcher ->
 import { SWRConfig } from "swr";
 import { fetcher } from "@/services/fetcher";
 
