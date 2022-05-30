@@ -1,5 +1,5 @@
 const weatherHost = "weatherapi-com.p.rapidapi.com";
-const weatherKey = import.meta.env.VITE_RAPIDAPI_KEY;
+const weatherKey = "67a0048625msh9043c2cec667145p1bf18bjsn2ead66f76c24";
 
 // Requests ->
 
@@ -18,7 +18,7 @@ export const fetchOptions = {
   method: "GET",
   headers: {
     "X-RapidAPI-Host": weatherHost,
-    "X-RapidAPI-Key": "67a0048625msh9043c2cec667145p1bf18bjsn2ead66f76c24",
+    "X-RapidAPI-Key": weatherKey,
   },
 };
 

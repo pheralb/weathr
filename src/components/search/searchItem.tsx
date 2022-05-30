@@ -1,13 +1,20 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Icon, Text } from "@chakra-ui/react";
 import Link from "@/components/link";
 import { SearchData } from "@/interfaces/searchData";
+import { MapPin } from "phosphor-react";
 
-const SearchItem = ({ name }: SearchData) => {
+const SearchItem = ({ name, region, country }: SearchData) => {
   return (
     <>
       <Link href={`/search/${name}`}>
-        <Box>
-          <Text>{name}</Text>
+        <Box p="3" borderWidth="1px" borderRadius="5px" mb="2">
+          <Text fontSize="14px">
+            <Icon as={MapPin} mr="2" />
+            {name}
+          </Text>
+          <Text>
+            {region} - {country}
+          </Text>
         </Box>
       </Link>
     </>

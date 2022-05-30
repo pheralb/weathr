@@ -67,7 +67,7 @@ const Header = ({ savedIcon, savedClick }: Props) => {
           </Link>
           <HStack display="flex" alignItems="center" spacing={1}>
             <HStack
-              spacing={1}
+              spacing={2}
               mr={1}
               display={{ base: "none", md: "inline-flex" }}
             >

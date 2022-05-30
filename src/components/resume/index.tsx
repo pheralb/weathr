@@ -9,11 +9,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Card from "@/components/card";
-import { Drop, Moon, SunDim, Thermometer, Wind } from "phosphor-react";
+import { Drop, Thermometer, Wind } from "phosphor-react";
 import useSWR from "swr";
 import { historyWeatherUrl } from "@/services/rapidapi";
-import Loading from "@/components/status/error";
-import Error from "@/components/status/error";
+import Loading from "@/components/status/loading";
 
 const Index = ({
   temp_c,

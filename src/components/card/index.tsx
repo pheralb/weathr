@@ -17,7 +17,7 @@ const Card = ({ children }: Props) => {
           w="full"
           bg={bg}
           borderWidth="2px"
-          shadow="md"
+          shadow="sm"
           rounded="lg"
           overflow="hidden"
           mx="auto"

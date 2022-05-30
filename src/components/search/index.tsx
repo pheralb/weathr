@@ -14,7 +14,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { MagnifyingGlass } from "phosphor-react";
+import { MagnifyingGlass, X } from "phosphor-react";
 import { searchWeatherUrl } from "@/services/rapidapi";
 import { fetcher } from "@/services/fetcher";
 import { SearchData } from "@/interfaces/searchData";
@@ -40,7 +40,6 @@ const index = (props: Props) => {
   const fetchCityWeather = async () => {
     const response = await fetcher(`${searchWeatherUrl}` + `${search}`);
     setOptions(response);
-    console.log(options);
   };
 
   return (
@@ -63,14 +62,19 @@ const index = (props: Props) => {
               placeholder="Type here (min. 4 letters)..."
               onChange={(e) => handleChange(e)}
             />
-            <Box p="3" mt="2">
-              <Text>{options.length ? `${options.length} results` : null}</Text>
+            <Box mt="2">
+              <Text mb="2" mt="4" textAlign="center">{options.length ? `${options.length} results` : null}</Text>
               {display ? (
                 <>
                   {options.map((option: SearchData) => {
                     return (
                       <>
-                        <SearchItem key={option.id} name={option.name} />
+                        <SearchItem
+                          key={option.id}
+                          name={option.name}
+                          region={option.region}
+                          country={option.country}
+                        />
                       </>
                     );
                   })}
@@ -84,6 +88,7 @@ const index = (props: Props) => {
               variant="outline"
               w="100%"
               fontWeight="light"
+              leftIcon={<X size={16} />}
               onClick={onClose}
             >
               Close

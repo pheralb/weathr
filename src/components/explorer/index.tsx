@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
+import { HeartStraight } from "phosphor-react";
+import NoLocations from "./noLocations";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 type Props = {
   w?: string;
@@ -8,13 +11,13 @@ type Props = {
 };
 
 const Index = (props: Props) => {
-  const [locations, setLocations] = useState(
-    localStorage.savedLocations ? JSON.parse(localStorage.savedLocations) : []
-  );
+
+  const [locations, setLocations] = useLocalStorage("savedLocations", []);
 
   useEffect(() => {
-    localStorage.setItem("savedLocations", JSON.stringify(locations));
-  }, [locations]);
+    localStorage.getItem("savedLocations");
+    
+  }, []);
 
   return (
     <Box
@@ -30,12 +33,18 @@ const Index = (props: Props) => {
       shadow="sm"
       {...props}
     >
-      <Flex p="4" pl="7" mt="2" direction="column">
+      <Box p="4" mt="2" w="full">
         <Text fontSize="2xl" mb="3" fontFamily="Inter-Semibold">
           Saved:
         </Text>
-        {}
-      </Flex>
+        {locations.length < 0 ? (
+          <></>
+        ) : (
+          <>
+            <NoLocations />
+          </>
+        )}
+      </Box>
     </Box>
   );
 };
