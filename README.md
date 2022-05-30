@@ -33,6 +33,7 @@ git clone git@github.com:pheralb/weathr.git
 
 ```
 VITE_RAPIDAPI_KEY=
+VITE_RAPIDAPI_HOST=
 ```
 
 🤔 How to generate the RAPIDAPI_KEY?
