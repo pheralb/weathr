@@ -1,9 +1,9 @@
 import useSWR from "swr";
 import { weatherUrl } from "@/services/rapidapi";
 import { Flex, Text } from "@chakra-ui/react";
+import { Navigate } from "react-router-dom";
 
 import Resume from "@/components/resume";
-import Error from "@/components/status/error";
 import Loading from "@/components/status/loading";
 
 import useLocalStorage from "@/hooks/useLocalStorage";
@@ -16,7 +16,7 @@ const Home = () => {
   );
   const { data, error } = useSWR(`${weatherUrl}${defaultLocation}`);
 
-  if (error) return <Error message={error} />;
+  if (error) return <Navigate to="/404" />;
   if (!data) return <Loading message="Loading..." />;
 
   return (
@@ -45,6 +45,7 @@ const Home = () => {
           localtime={data.location.localtime_epoch}
           city_name={data.location.name}
         />
+        
       </AnimatePage>
     </>
   );

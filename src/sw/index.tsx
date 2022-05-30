@@ -20,7 +20,7 @@ function SW() {
 
   useEffect(() => {
     if (offlineReady) {
-      toast("Weathr is correctly installed", {
+      toast("Weathr has been installed, it now works offline!", {
         icon: "🥳",
         style: {
           borderRadius: "10px",

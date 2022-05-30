@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import useSWR from "swr";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { weatherUrl } from "@/services/rapidapi";
 
 import { Button, Flex, Icon, Text } from "@chakra-ui/react";
@@ -10,18 +11,27 @@ import Loading from "@/components/status/loading";
 
 import AnimatePage from "@/animate/pages";
 import { FloppyDisk } from "phosphor-react";
+import toast from "react-hot-toast";
 
 const Search = () => {
-  let params = useParams();
-  const navigate = useNavigate();
 
+  let params = useParams();
+  const [isDefault, setIsDefault] = useState(false);
   const { data, error } = useSWR(`${weatherUrl}${params.name}`);
 
-  if (error) return <Error message={error} />;
+  if (error) return <Navigate to="/404" />;
   if (!data) return <Loading message="Loading..." />;
 
   const saveLocation = () => {
     localStorage.setItem("defaultLocation", JSON.stringify(params.name));
+    toast(`${data.location.name} is your default location`, {
+      icon: "🛩️",
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
   };
 
   return (
@@ -41,8 +51,9 @@ const Search = () => {
           fontWeight="light"
           leftIcon={<Icon as={FloppyDisk} />}
           onClick={saveLocation}
+          isDisabled={isDefault}
         >
-          Save location by default
+          {isDefault ? "Your default location" : "Save as Default"}
         </Button>
       </Flex>
       <Resume
