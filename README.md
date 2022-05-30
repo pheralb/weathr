@@ -1,6 +1,5 @@
-<img src="https://i.postimg.cc/3x9d0C0D/weathr-readme-banner.png" alt="weathr Banner" width="100%"/>
-
 <div align="center">
+<img src="https://i.postimg.cc/YqNZrpWx/weathr-banner.png" alt="weathr Banner" width="80%"/>
 <p>
 <h3><b>A beautifully weather app</b></h3>
 </p>
