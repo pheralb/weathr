@@ -7,6 +7,7 @@ import { weatherUrl } from "@/services/rapidapi";
 import { Button, Flex, HStack, IconButton, Text } from "@chakra-ui/react";
 
 import Resume from "@/components/resume";
+import Hours from "@/components/hours";
 import Loading from "@/components/status/loading";
 
 import AnimatePage from "@/animate/pages";
@@ -16,7 +17,6 @@ import toast from "react-hot-toast";
 const Search = () => {
   let params = useParams();
   const [isDefault, setIsDefault] = useState(false);
-  const [save, setSave] = useState();
   const { data, error } = useSWR(`${weatherUrl}${params.name}`);
 
   if (error) return <Navigate to="/404" />;
@@ -93,7 +93,10 @@ const Search = () => {
         is_day={data.current.is_day}
         localtime={data.location.localtime_epoch}
         city_name={data.location.name}
+        max_temp_c={data.forecast.forecastday[0].day.maxtemp_c}
+        min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
       />
+      <Hours hours_forecast={data.forecast.forecastday[0].hour} />
     </AnimatePage>
   );
 };

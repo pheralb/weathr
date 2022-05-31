@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -19,6 +19,7 @@ import { searchWeatherUrl } from "@/services/rapidapi";
 import { fetcher } from "@/services/fetcher";
 import { SearchData } from "@/interfaces/searchData";
 import SearchItem from "./searchItem";
+import CustomTooltip from "@/components/tooltip";
 
 type Props = {};
 
@@ -44,12 +45,14 @@ const index = (props: Props) => {
 
   return (
     <>
-      <IconButton
-        variant="ghost"
-        aria-label="Open/Close Sidebar"
-        icon={<MagnifyingGlass size={22} weight="bold" />}
-        onClick={onOpen}
-      />
+      <CustomTooltip message="Search">
+        <IconButton
+          variant="ghost"
+          aria-label="Open/Close Sidebar"
+          icon={<MagnifyingGlass size={22} weight="bold" />}
+          onClick={onOpen}
+        />
+      </CustomTooltip>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg={bg}>
@@ -63,7 +66,9 @@ const index = (props: Props) => {
               onChange={(e) => handleChange(e)}
             />
             <Box mt="2">
-              <Text mb="2" mt="4" textAlign="center">{options.length ? `${options.length} results` : null}</Text>
+              <Text mb="2" mt="4" textAlign="center">
+                {options.length ? `${options.length} results` : null}
+              </Text>
               {display ? (
                 <>
                   {options.map((option: SearchData) => {

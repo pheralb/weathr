@@ -15,6 +15,8 @@ import { TextAlignRight, MapPin } from "phosphor-react";
 import Search from "@/components/search";
 import Link from "@/components/link";
 import ChangeTheme from "@/components/theme/change";
+import Geolocation from "@/components/geolocation";
+import CustomTooltip from "@/components/tooltip";
 
 type Props = {
   savedClick?: () => void;
@@ -27,18 +29,21 @@ const Header = ({ savedIcon, savedClick }: Props) => {
   const mobileNav = useDisclosure();
   const date = new Date();
   const dateNow = new Date().toLocaleDateString();
-  const hoursNow = `${date.getHours()}:${date.getMinutes()}`;
+
   const HeaderMenu = () => {
     return (
       <>
+        <Geolocation />
         <Search />
         <ChangeTheme />
-        <IconButton
-          variant="ghost"
-          aria-label="Open/Close Saved Sidebar"
-          icon={savedIcon}
-          onClick={savedClick}
-        />
+        <CustomTooltip message="Saved">
+          <IconButton
+            variant="ghost"
+            aria-label="Open/Close Saved Sidebar"
+            icon={savedIcon}
+            onClick={savedClick}
+          />
+        </CustomTooltip>
       </>
     );
   };

@@ -1,16 +1,12 @@
-// Requests ->
-
+// Forecast Weather API:
 export const weatherUrl =
-  "https://weatherapi-com.p.rapidapi.com/current.json?q=";
+  "https://weatherapi-com.p.rapidapi.com/forecast.json?q=";
 
-export const historyWeatherUrl = 
-  "https://weatherapi-com.p.rapidapi.com/history.json?q=";
-
+// Search/Autocomplete API:
 export const searchWeatherUrl =
   "https://weatherapi-com.p.rapidapi.com/search.json?q=";
 
-// Fetch Options ->
-
+// Fetch Options:
 export const fetchOptions = {
   method: "GET",
   headers: {
@@ -18,4 +14,3 @@ export const fetchOptions = {
     "X-RapidAPI-Key": import.meta.env.VITE_RAPIDAPI_KEY,
   },
 };
-
