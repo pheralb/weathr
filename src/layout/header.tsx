@@ -11,23 +11,16 @@ import {
   Heading,
   Icon,
 } from "@chakra-ui/react";
-import { TextAlignRight, MapPin } from "phosphor-react";
+import { TextAlignRight } from "phosphor-react";
 import Search from "@/components/search";
-import Link from "@/components/link";
+import Link from "@/common/link";
 import ChangeTheme from "@/components/theme/change";
 import Geolocation from "@/components/geolocation";
-import CustomTooltip from "@/components/tooltip";
 
-type Props = {
-  savedClick?: () => void;
-  savedIcon?: React.ReactElement;
-};
-
-const Header = ({ savedIcon, savedClick }: Props) => {
+const Header = () => {
   const bg = useColorModeValue("bg.light", "bg.dark");
   const colorToday = useColorModeValue("gray.500", "gray.500");
   const mobileNav = useDisclosure();
-  const date = new Date();
   const dateNow = new Date().toLocaleDateString();
 
   const HeaderMenu = () => {
@@ -36,14 +29,6 @@ const Header = ({ savedIcon, savedClick }: Props) => {
         <Geolocation />
         <Search />
         <ChangeTheme />
-        <CustomTooltip message="Saved">
-          <IconButton
-            variant="ghost"
-            aria-label="Open/Close Saved Sidebar"
-            icon={savedIcon}
-            onClick={savedClick}
-          />
-        </CustomTooltip>
       </>
     );
   };
@@ -102,17 +87,12 @@ const Header = ({ savedIcon, savedClick }: Props) => {
                 shadow="sm"
                 borderBottomWidth="1px"
               >
+                <HeaderMenu />
                 <CloseButton
                   mr="2"
                   borderWidth="1px"
                   aria-label="Close menu"
                   onClick={mobileNav.onClose}
-                />
-                <HeaderMenu />
-                <IconButton
-                  variant="ghost"
-                  aria-label="Open/Close Sidebar"
-                  icon={<MapPin size={22} weight="bold" />}
                 />
               </HStack>
             </Box>

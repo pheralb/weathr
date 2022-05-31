@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { IconButton } from "@chakra-ui/react";
 import toast from "react-hot-toast";
 import { MapPin } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
-import CustomTooltip from "@/components/tooltip/";
+import IconBtn from "@/common/iconBtn";
 
 type Props = {};
 
@@ -21,8 +20,9 @@ const Index = (props: Props) => {
       setLoading(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          navigate(`/search/${position.coords.latitude},${position.coords.longitude}`);
-          console.log(position.coords.latitude, position.coords.longitude);
+          navigate(
+            `/search/${position.coords.latitude},${position.coords.longitude}`
+          );
           setLoading(false);
         },
         () => {
@@ -41,16 +41,13 @@ const Index = (props: Props) => {
   };
 
   return (
-    <CustomTooltip message={message}>
-      <IconButton
-        variant="ghost"
-        aria-label="Get Location"
-        icon={<MapPin size={22} weight="bold" />}
-        onClick={getLocation}
-        isLoading={loading}
-        isDisabled={disabled}
-      />
-    </CustomTooltip>
+    <IconBtn
+      ariaLabel={message}
+      onClick={getLocation}
+      icon={<MapPin size={22} weight="bold" />}
+      isLoading={loading}
+      isDisabled={disabled}
+    />
   );
 };
 

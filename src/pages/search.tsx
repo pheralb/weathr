@@ -4,14 +4,22 @@ import { useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { weatherUrl } from "@/services/rapidapi";
 
-import { Button, Flex, HStack, IconButton, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Container,
+  Flex,
+  HStack,
+  IconButton,
+  Text,
+} from "@chakra-ui/react";
 
 import Resume from "@/components/resume";
 import Hours from "@/components/hours";
 import Loading from "@/components/status/loading";
+import SaveLocations from "@/components/saveLocation";
 
 import AnimatePage from "@/animate/pages";
-import { Heart, MapPin } from "phosphor-react";
+import { MapPin } from "phosphor-react";
 import toast from "react-hot-toast";
 
 const Search = () => {
@@ -53,10 +61,15 @@ const Search = () => {
 
   return (
     <AnimatePage>
-      <Flex mb="5" direction="column" alignItems="center">
+      <Flex
+        mb="5"
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Text
           fontSize={{ base: "5xl", sm: "6xl" }}
-          mt={{ base: "3", sm: "6xl" }}
+          mt={{ base: "3", sm: "0" }}
           fontFamily="Inter-Semibold"
         >
           {data.location.name}
@@ -65,13 +78,10 @@ const Search = () => {
           {data.location.country}
         </Text>
         <HStack>
-          <IconButton
-            aria-label="Save location"
-            icon={<Heart size="18" />}
-            variant="ghost"
-            borderWidth="1px"
-            size="md"
-            onClick={setSaveLocation}
+          <SaveLocations
+            title={data.location.name}
+            country={data.location.country}
+            url={params.name}
           />
           <Button
             fontWeight="light"
@@ -82,21 +92,23 @@ const Search = () => {
             {isDefault ? "Your default location" : "Save as Default"}
           </Button>
         </HStack>
+        <Container maxW="container.xl" mt="6">
+          <Resume
+            temp_c={data.current.temp_c}
+            current_condition={data.current.condition.text}
+            icon_condition={data.current.condition.icon}
+            humidity={data.current.humidity}
+            gust_kph={data.current.wind_kph}
+            wind_kph={data.current.wind_kph}
+            is_day={data.current.is_day}
+            localtime={data.location.localtime_epoch}
+            city_name={data.location.name}
+            max_temp_c={data.forecast.forecastday[0].day.maxtemp_c}
+            min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
+          />
+          <Hours hours_forecast={data.forecast.forecastday[0].hour} />
+        </Container>
       </Flex>
-      <Resume
-        temp_c={data.current.temp_c}
-        current_condition={data.current.condition.text}
-        icon_condition={data.current.condition.icon}
-        humidity={data.current.humidity}
-        gust_kph={data.current.wind_kph}
-        wind_kph={data.current.wind_kph}
-        is_day={data.current.is_day}
-        localtime={data.location.localtime_epoch}
-        city_name={data.location.name}
-        max_temp_c={data.forecast.forecastday[0].day.maxtemp_c}
-        min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
-      />
-      <Hours hours_forecast={data.forecast.forecastday[0].hour} />
     </AnimatePage>
   );
 };

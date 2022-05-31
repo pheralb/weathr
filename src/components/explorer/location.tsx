@@ -1,7 +1,6 @@
 import React from 'react'
-import { SaveData } from '@/interfaces/saveData'
 
-const Location = (props: SaveData) => {
+const Location = () => {
   return (
     <div>Location</div>
   )

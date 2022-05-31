@@ -1,6 +1,6 @@
 import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 import { Moon, Sun } from "phosphor-react";
-import CustomTooltip from "@/components/tooltip";
+import CustomTooltip from "@/common/tooltip";
 
 const Index = () => {
   const { colorMode, toggleColorMode } = useColorMode();

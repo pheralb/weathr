@@ -1,31 +1,14 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  IconButton,
-  Input,
-  Text,
-  useColorModeValue,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { MagnifyingGlass, X } from "phosphor-react";
+import { Box, Input, Text } from "@chakra-ui/react";
+import { MagnifyingGlass } from "phosphor-react";
 import { searchWeatherUrl } from "@/services/rapidapi";
 import { fetcher } from "@/services/fetcher";
 import { SearchData } from "@/interfaces/searchData";
 import SearchItem from "./searchItem";
-import CustomTooltip from "@/components/tooltip";
+import Drawer from "@/common/drawer";
 
-type Props = {};
-
-const index = (props: Props) => {
-  const bg = useColorModeValue("bg.light", "bg.dark");
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const index = () => {
+  
   const [display, setDisplay] = useState(false);
   const [options, setOptions] = useState([]);
   const [search, setSearch] = useState("");
@@ -45,61 +28,36 @@ const index = (props: Props) => {
 
   return (
     <>
-      <CustomTooltip message="Search">
-        <IconButton
-          variant="ghost"
-          aria-label="Open/Close Sidebar"
-          icon={<MagnifyingGlass size={22} weight="bold" />}
-          onClick={onOpen}
+      <Drawer
+        title="Search"
+        ariaLabel="Search"
+        icon={<MagnifyingGlass size={22} weight="bold" />}
+      >
+        <Input
+          placeholder="Type here (min. 4 letters)..."
+          onChange={(e) => handleChange(e)}
         />
-      </CustomTooltip>
-      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent bg={bg}>
-          <DrawerHeader mt="3" fontWeight="light" mb="0">
-            Search
-          </DrawerHeader>
-
-          <DrawerBody>
-            <Input
-              placeholder="Type here (min. 4 letters)..."
-              onChange={(e) => handleChange(e)}
-            />
-            <Box mt="2">
-              <Text mb="2" mt="4" textAlign="center">
-                {options.length ? `${options.length} results` : null}
-              </Text>
-              {display ? (
-                <>
-                  {options.map((option: SearchData) => {
-                    return (
-                      <>
-                        <SearchItem
-                          key={option.id}
-                          name={option.name}
-                          region={option.region}
-                          country={option.country}
-                        />
-                      </>
-                    );
-                  })}
-                </>
-              ) : null}
-            </Box>
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button
-              variant="outline"
-              w="100%"
-              fontWeight="light"
-              leftIcon={<X size={16} />}
-              onClick={onClose}
-            >
-              Close
-            </Button>
-          </DrawerFooter>
-        </DrawerContent>
+        <Box mt="2">
+          <Text mb="2" mt="4" textAlign="center">
+            {options.length ? `${options.length} results` : null}
+          </Text>
+          {display ? (
+            <>
+              {options.map((option: SearchData) => {
+                return (
+                  <>
+                    <SearchItem
+                      key={option.id}
+                      name={option.name}
+                      region={option.region}
+                      country={option.country}
+                    />
+                  </>
+                );
+              })}
+            </>
+          ) : null}
+        </Box>
       </Drawer>
     </>
   );

@@ -31,39 +31,53 @@ const Index = ({
           <Center>
             <Image src={icon_condition} boxSize={"35px"} />
           </Center>
-          <Text fontSize="4xl" fontFamily="Inter-Semibold">
+          <Text
+            fontSize={{ base: "3xl", md: "4xl" }}
+            fontFamily="Inter-Semibold"
+          >
             {temp_c}
           </Text>
           <Box>
-            <Text fontFamily="Inter-Semibold">ºC - {current_condition}</Text>
+            <Text title={current_condition} isTruncated>
+              ºC - {current_condition}
+            </Text>
           </Box>
         </Box>
       </Card>
       <Card>
         <Box>
           <Icon as={Thermometer} boxSize={30} />
-          <Text fontSize="4xl" fontFamily="Inter-Semibold">
+          <Text
+            fontSize={{ base: "3xl", md: "4xl" }}
+            fontFamily="Inter-Semibold"
+          >
             {max_temp_c} / {min_temp_c}
           </Text>
-          <Text fontFamily="Inter-Semibold">ºC - Max/Min</Text>
+          <Text>ºC - Max/Min</Text>
         </Box>
       </Card>
       <Card>
         <Box>
           <Icon as={Drop} boxSize={30} />
-          <Text fontSize="4xl" fontFamily="Inter-Semibold">
+          <Text
+            fontSize={{ base: "3xl", md: "4xl" }}
+            fontFamily="Inter-Semibold"
+          >
             {humidity}
           </Text>
-          <Text fontFamily="Inter-Semibold">% - Humidity</Text>
+          <Text>% - Humidity</Text>
         </Box>
       </Card>
       <Card>
         <Box>
           <Icon as={Wind} boxSize={30} />
-          <Text fontSize="4xl" fontFamily="Inter-Semibold">
+          <Text
+            fontSize={{ base: "3xl", md: "4xl" }}
+            fontFamily="Inter-Semibold"
+          >
             {wind_kph}
           </Text>
-          <Text fontFamily="Inter-Semibold">km/h - Wind speed</Text>
+          <Text>km/h - Wind speed</Text>
         </Box>
       </Card>
     </SimpleGrid>
