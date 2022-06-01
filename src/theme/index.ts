@@ -26,7 +26,7 @@ const theme = extendTheme({
         height: "100%",
         maxHeight: "100vh",
         background: mode(
-          "bg.light",
+          "radial-gradient(circle at 1px 1px, #E7E7E7 1px, #FFFFFF 0)",
           "radial-gradient(circle at 1px 1px, #212121 1px, #13111C 0)"
         )(props),
         backgroundSize: "40px 40px",

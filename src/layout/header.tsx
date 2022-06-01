@@ -13,9 +13,10 @@ import {
 } from "@chakra-ui/react";
 import { TextAlignRight } from "phosphor-react";
 import Search from "@/components/search";
-import Link from "@/common/link";
 import ChangeTheme from "@/components/theme/change";
 import Geolocation from "@/components/geolocation";
+import Explorer from "@/components/explorer";
+import Link from "@/common/link";
 
 const Header = () => {
   const bg = useColorModeValue("bg.light", "bg.dark");
@@ -29,6 +30,7 @@ const Header = () => {
         <Geolocation />
         <Search />
         <ChangeTheme />
+        <Explorer />
       </>
     );
   };

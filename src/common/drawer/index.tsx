@@ -18,7 +18,7 @@ const Index = (props: CustomComponent) => {
   const bg = useColorModeValue("bg.light", "bg.dark");
   return (
     <>
-      <IconBtn ariaLabel="Search" onClick={onOpen} icon={props.icon} />
+      <IconBtn ariaLabel={props.ariaLabel} onClick={onOpen} icon={props.icon} />
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent bg={bg}>

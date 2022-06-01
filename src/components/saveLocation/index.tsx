@@ -3,6 +3,7 @@ import IconBtn from "@/common/iconBtn";
 import { nanoid } from "nanoid";
 import { Heart } from "phosphor-react";
 import { SaveLocation } from "@/interfaces/saveLocation";
+import confetti from "canvas-confetti";
 
 const Index = ({ url, title, country }: SaveLocation) => {
   const [saved, setSaved] = useState(
@@ -30,6 +31,13 @@ const Index = ({ url, title, country }: SaveLocation) => {
     } else {
       setSaved([...saved, newLocation]);
       setFind(true);
+      confetti({
+        particleCount: 100,
+        startVelocity: 30,
+        spread: 300,
+        gravity: 1.2,
+        origin: { y: 0 },
+      });
     }
   };
 

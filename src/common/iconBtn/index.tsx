@@ -1,4 +1,3 @@
-import React from "react";
 import { IconButton } from "@chakra-ui/react";
 import CustomTooltip from "@/common/tooltip";
 import { CustomComponent } from "@/interfaces/customComponent";
@@ -11,6 +10,8 @@ const Index = (props: CustomComponent) => {
         aria-label={props.ariaLabel}
         icon={props.icon}
         onClick={props.onClick}
+        isDisabled={props.isDisabled}
+        isLoading={props.isLoading}
       />
     </CustomTooltip>
   );
