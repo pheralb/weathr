@@ -16,3 +16,4 @@ const AstroItem = (props: AstroData) => {
 };
 
 export default AstroItem;
+

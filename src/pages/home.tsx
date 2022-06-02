@@ -22,8 +22,6 @@ const Home = () => {
   if (error) return <Navigate to="/404" />;
   if (!data) return <Loading message="Loading..." />;
 
-  console.log(data);
-
   return (
     <>
       <AnimatePage>
