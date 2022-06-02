@@ -5,6 +5,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { weatherUrl } from "@/services/rapidapi";
 
 import {
+  Box,
   Button,
   Container,
   Flex,
@@ -17,6 +18,8 @@ import Resume from "@/components/resume";
 import Hours from "@/components/hours";
 import Loading from "@/components/status/loading";
 import SaveLocations from "@/components/saveLocation";
+import Astro from "@/components/astro";
+import CardLarge from "@/common/card/large";
 
 import AnimatePage from "@/animate/pages";
 import { MapPin } from "phosphor-react";
@@ -34,23 +37,6 @@ const Search = () => {
     localStorage.setItem("defaultLocation", JSON.stringify(params.name));
     toast(`${data.location.name} is your default location`, {
       icon: "🛩️",
-      style: {
-        borderRadius: "10px",
-        background: "#333",
-        color: "#fff",
-      },
-    });
-  };
-
-  const setSaveLocation = () => {
-    const newLocation = {
-      id: nanoid(),
-      title: `${data.location.name}`,
-      url: `/search/${data.location.name}`,
-    };
-    localStorage.setItem("savedLocations", JSON.stringify(newLocation));
-    toast(`${data.location.name} is saved`, {
-      icon: "🎉",
       style: {
         borderRadius: "10px",
         background: "#333",
@@ -107,6 +93,16 @@ const Search = () => {
             min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
           />
           <Hours hours_forecast={data.forecast.forecastday[0].hour} />
+          <Box mt="5">
+            <CardLarge>
+              <Astro
+                moonrise={data.forecast.forecastday[0].astro.moonrise}
+                moonset={data.forecast.forecastday[0].astro.moonset}
+                sunrise={data.forecast.forecastday[0].astro.sunrise}
+                sunset={data.forecast.forecastday[0].astro.sunset}
+              />
+            </CardLarge>
+          </Box>
         </Container>
       </Flex>
     </AnimatePage>

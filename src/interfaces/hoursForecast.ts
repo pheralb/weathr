@@ -3,4 +3,5 @@ export interface HoursForecast {
   temp_c: string;
   is_day: number;
   condition: string;
+  date: string;
 }

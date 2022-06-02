@@ -13,6 +13,7 @@ const Index = ({ hours_forecast }: WeatherData) => {
             time_epoch={hour.time_epoch}
             is_day={hour.is_day}
             condition={hour.condition}
+            date={hour.date}
           />
         );
       })}

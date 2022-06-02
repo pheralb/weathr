@@ -37,13 +37,16 @@ const Header = () => {
 
   return (
     <>
-      <Box as="header" px={{ base: 5, sm: 6 }} py={5}>
+      <Box as="header" w="full" position="sticky" top="0">
         <Flex
           direction="row"
           alignItems="center"
           justifyContent="space-between"
           bg={bg}
           w="full"
+          py={5}
+          px={{ base: 5, sm: 6 }}
+          mb="5"
         >
           <Link href="/">
             <Flex direction="column">

@@ -8,7 +8,7 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import Card from "@/components/card";
+import Card from "@/common/card";
 import { Drop, Thermometer, Wind } from "phosphor-react";
 
 const Index = ({

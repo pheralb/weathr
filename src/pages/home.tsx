@@ -1,24 +1,28 @@
 import useSWR from "swr";
 import { weatherUrl } from "@/services/rapidapi";
-import { Container, Flex, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { Navigate } from "react-router-dom";
 
 import Resume from "@/components/resume";
 import Hours from "@/components/hours";
+import Astro from "@/components/astro";
 import Loading from "@/components/status/loading";
 
 import useLocalStorage from "@/hooks/useLocalStorage";
 import AnimatePage from "@/animate/pages";
+import CardLarge from "@/common/card/large";
 
 const Home = () => {
   const [defaultLocation, setDefaultLocation] = useLocalStorage(
     "defaultLocation",
     "Spain"
   );
-  const { data, error } = useSWR(`${weatherUrl}${defaultLocation}`);
+  const { data, error } = useSWR(`${weatherUrl}${defaultLocation}&days=3`);
 
   if (error) return <Navigate to="/404" />;
   if (!data) return <Loading message="Loading..." />;
+
+  console.log(data);
 
   return (
     <>
@@ -49,6 +53,16 @@ const Home = () => {
               min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
             />
             <Hours hours_forecast={data.forecast.forecastday[0].hour} />
+            <Box mt="5">
+              <CardLarge>
+                <Astro
+                  moonrise={data.forecast.forecastday[0].astro.moonrise}
+                  moonset={data.forecast.forecastday[0].astro.moonset}
+                  sunrise={data.forecast.forecastday[0].astro.sunrise}
+                  sunset={data.forecast.forecastday[0].astro.sunset}
+                />
+              </CardLarge>
+            </Box>
           </Container>
         </Flex>
       </AnimatePage>

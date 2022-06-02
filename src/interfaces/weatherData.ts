@@ -1,6 +1,7 @@
 import { HoursForecast } from "@/interfaces/hoursForecast";
 
 export interface WeatherData {
+  date?: string;
   temp_c?: string;
   current_condition?: string;
   icon_condition?: string;
@@ -12,5 +13,6 @@ export interface WeatherData {
   city_name?: string;
   max_temp_c?: string;
   min_temp_c?: string;
+  time_epoch?: number;
   hours_forecast?: HoursForecast[];
 }

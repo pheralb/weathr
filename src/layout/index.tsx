@@ -1,9 +1,5 @@
-import { Box, useDisclosure } from "@chakra-ui/react";
-
 import Header from "@/layout/header";
-import Explorer from "@/components/explorer";
-
-import { Heart, X } from "phosphor-react";
+import Footer from "./footer";
 
 type Props = {
   children?: React.ReactNode;
@@ -14,6 +10,7 @@ const Index = ({ children }: Props) => {
     <>
       <Header />
       {children}
+      <Footer />
     </>
   );
 };
