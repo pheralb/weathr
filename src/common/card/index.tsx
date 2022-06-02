@@ -8,11 +8,7 @@ const Card = ({ children }: Props) => {
   const bg = useColorModeValue("bg.light", "bg.dark");
   return (
     <>
-      <Flex
-        w="full"
-        alignItems="center"
-        justifyContent="center"
-      >
+      <Flex w="full" alignItems="center" justifyContent="center">
         <Box
           w="full"
           bg={bg}

@@ -5,5 +5,6 @@ export interface AstroData {
   sunrise?: string;
   sunset?: string;
   title?: string;
+  hour?: string;
   image?: string;
 }

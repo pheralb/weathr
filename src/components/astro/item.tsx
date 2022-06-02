@@ -6,7 +6,7 @@ const AstroItem = (props: AstroData) => {
     <Box p="4">
       <Image src={props.image} boxSize="20" alt={props.title} />
       <Text fontSize="xl" fontFamily="Inter-Semibold">
-        {props.title}
+        {props.hour}
       </Text>
       <Text color="gray.500" textAlign="center">
         {props.title}
