@@ -24,6 +24,7 @@ import CardLarge from "@/common/card/large";
 import AnimatePage from "@/animate/pages";
 import { MapPin } from "phosphor-react";
 import toast from "react-hot-toast";
+import Show from "@/animate/show";
 
 const Search = () => {
   let params = useParams();
@@ -79,30 +80,32 @@ const Search = () => {
           </Button>
         </HStack>
         <Container maxW="container.xl" mt="6">
-          <Resume
-            temp_c={data.current.temp_c}
-            current_condition={data.current.condition.text}
-            icon_condition={data.current.condition.icon}
-            humidity={data.current.humidity}
-            gust_kph={data.current.wind_kph}
-            wind_kph={data.current.wind_kph}
-            is_day={data.current.is_day}
-            localtime={data.location.localtime_epoch}
-            city_name={data.location.name}
-            max_temp_c={data.forecast.forecastday[0].day.maxtemp_c}
-            min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
-          />
-          <Hours hours_forecast={data.forecast.forecastday[0].hour} />
-          <Box mt="5">
-            <CardLarge>
-              <Astro
-                moonrise={data.forecast.forecastday[0].astro.moonrise}
-                moonset={data.forecast.forecastday[0].astro.moonset}
-                sunrise={data.forecast.forecastday[0].astro.sunrise}
-                sunset={data.forecast.forecastday[0].astro.sunset}
-              />
-            </CardLarge>
-          </Box>
+          <Show>
+            <Resume
+              temp_c={data.current.temp_c}
+              current_condition={data.current.condition.text}
+              icon_condition={data.current.condition.icon}
+              humidity={data.current.humidity}
+              gust_kph={data.current.wind_kph}
+              wind_kph={data.current.wind_kph}
+              is_day={data.current.is_day}
+              localtime={data.location.localtime_epoch}
+              city_name={data.location.name}
+              max_temp_c={data.forecast.forecastday[0].day.maxtemp_c}
+              min_temp_c={data.forecast.forecastday[0].day.mintemp_c}
+            />
+            <Hours hours_forecast={data.forecast.forecastday[0].hour} />
+            <Box mt="5">
+              <CardLarge>
+                <Astro
+                  moonrise={data.forecast.forecastday[0].astro.moonrise}
+                  moonset={data.forecast.forecastday[0].astro.moonset}
+                  sunrise={data.forecast.forecastday[0].astro.sunrise}
+                  sunset={data.forecast.forecastday[0].astro.sunset}
+                />
+              </CardLarge>
+            </Box>
+          </Show>
         </Container>
       </Flex>
     </AnimatePage>

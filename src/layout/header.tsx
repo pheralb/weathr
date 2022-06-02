@@ -46,7 +46,7 @@ const Header = () => {
           w="full"
           py={5}
           px={{ base: 5, sm: 6 }}
-          mb="5"
+          mb={{ base: 0, sm: 4 }}
         >
           <Link href="/">
             <Flex direction="column">
