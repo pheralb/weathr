@@ -55,9 +55,10 @@ const Search = () => {
         alignItems="center"
       >
         <Text
-          fontSize={{ base: "5xl", sm: "6xl" }}
+          fontSize={{ base: "4xl", sm: "6xl" }}
           mt={{ base: "3", sm: "0" }}
           fontFamily="Inter-Semibold"
+          isTruncated
         >
           {data.location.name}
         </Text>

@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProps, extendTheme } from "@chakra-ui/react";
 import { mode } from "@chakra-ui/theme-tools";
 
 const theme = extendTheme({
@@ -9,7 +9,7 @@ const theme = extendTheme({
   colors: {
     bg: {
       light: "#FFFFFF",
-      dark: "#12101C",
+      dark: "#13111C",
     },
     light: {
       white: "#FFFFFF",
@@ -21,7 +21,7 @@ const theme = extendTheme({
     heading: "Inter-SemiBold, sans-serif",
   },
   styles: {
-    global: (props: any) => ({
+    global: (props: ChakraProps) => ({
       "html, body": {
         height: "100%",
         maxHeight: "100vh",

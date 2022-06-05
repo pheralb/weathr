@@ -44,7 +44,7 @@ const Index = ({ url, title, country }: SaveLocation) => {
   return (
     <IconBtn
       ariaLabel={find ? "Remove from saved locations" : "Save location"}
-      icon={find ? <Heart size={22} weight="duotone" /> : <Heart size={22} />}
+      icon={find ? <Heart size={22} color="#BD2323" weight="duotone" /> : <Heart size={22} />}
       onClick={handleSaveLocation}
     />
   );

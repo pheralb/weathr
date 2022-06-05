@@ -21,7 +21,7 @@ const Footer = () => {
       mt="5"
     >
       <Text py={{ base: "2", sm: "0" }}>
-        <ChakraLink href="https://github.com/pheralb" isExternal>
+        <ChakraLink href="https://github.com/pheralb/weathr" isExternal>
           🚀 built by Pablo
         </ChakraLink>
       </Text>
