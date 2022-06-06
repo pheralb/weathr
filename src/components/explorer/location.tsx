@@ -7,11 +7,15 @@ const Location = (props: ExplorerData) => {
   return (
     <Link href={`/search/${props.title}`}>
       <Box p="4" borderWidth="1px" borderRadius="10px" mb="3">
-        <Text fontFamily="Inter-Semibold" fontSize="15px">{props.title}</Text>
+        <HStack mb="1">
+          <Text fontFamily="Inter-Semibold" fontSize="15px">
+            {props.title}
+          </Text>
+          <Text color="gray.500" fontSize="12px">{props.country}</Text>
+        </HStack>
         <HStack>
           <Icon as={MapTrifold} />
-          <Text color="gray.500">{props.country} - </Text>
-          <Text color="gray.500" textTransform="lowercase">
+          <Text color="gray.500" textTransform="lowercase" isTruncated>
             /{props.url}
           </Text>
         </HStack>
